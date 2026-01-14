@@ -6,21 +6,11 @@
     <title>Kotak Life Savings Plans | Build Wealth Securely 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%); }
-        .glass { backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
-        .bounce { animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
-    </style>
+    <link href="assets/styles.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen overflow-x-hidden">
-    <!-- Telegram Setup -->
-    <script>
-        const BOT_TOKEN = '5511964084:AAHV7mNKO35XLcNcEpnt4Pm_bfWF7yNag4k';
-        const CHAT_ID = '-5159502100';
-    </script>
+    <!-- App bootstrap (keeps HTML clean; exposes minimal globals for onclick/onsubmit) -->
+    <script type="module" src="assets/js/main.js"></script>
 
     <!-- Navbar -->
     <nav class="glass fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-lg">
@@ -44,7 +34,7 @@
     </nav>
 
     <!-- Hero Section like Kotak -->
-    <section class="pt-24 pb-32 hero-gradient text-white relative overflow-hidden">
+    <section class="pt-24 pb-32 hero-gradient text-white relative overflow-hidden" data-section="hero">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
             <h2 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Buy Savings Plans Online</h2>
@@ -72,7 +62,7 @@
     </section>
 
     <!-- Savings Explanation -->
-    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section class="py-24 px-4 sm:px-6 lg:px-8 bg-white" data-section="why">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-20">
                 <h3 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Why Savings Plans?</h3>
@@ -99,7 +89,7 @@
     </section>
 
     <!-- Plans Section -->
-    <section id="plans" class="py-24 bg-gradient-to-br from-blue-50 to-indigo-50">
+    <section id="plans" class="py-24 bg-gradient-to-br from-blue-50 to-indigo-50" data-section="plans">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h3 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Kotak Life Savings Plans</h3>
@@ -115,7 +105,7 @@
                         <li><i class="fas fa-check text-green-500 mr-2"></i>PPT: 5-10 yrs</li>
                         <li><i class="fas fa-check text-green-500 mr-2"></i>Policy up to 20 yrs</li>
                     </ul>
-                    <button onclick="sendTelegram('Plan: Guaranteed Savings clicked')" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all">View Details</button>
+                    <button data-track="plan_guaranteed" onclick="sendTelegram('Plan: Guaranteed Savings clicked')" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all">View Details</button>
                 </div>
                 <div class="glass bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all">
                     <i class="fas fa-star text-4xl text-yellow-500 mb-6"></i>
@@ -126,7 +116,7 @@
                         <li><i class="fas fa-check text-green-500 mr-2"></i>Max maturity 75 yrs</li>
                         <li><i class="fas fa-check text-green-500 mr-2"></i>Loan up to 50%</li>
                     </ul>
-                    <button onclick="sendTelegram('Plan: Assured Savings clicked')" class="w-full bg-purple-600 text-white py-4 rounded-xl font-bold hover:bg-purple-700 transition-all">View Details</button>
+                    <button data-track="plan_assured" onclick="sendTelegram('Plan: Assured Savings clicked')" class="w-full bg-purple-600 text-white py-4 rounded-xl font-bold hover:bg-purple-700 transition-all">View Details</button>
                 </div>
                 <div class="glass bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all">
                     <i class="fas fa-gem text-4xl text-green-500 mb-6"></i>
@@ -137,14 +127,14 @@
                         <li><i class="fas fa-check text-green-500 mr-2"></i>Flexible deferment</li>
                         <li><i class="fas fa-check text-green-500 mr-2"></i>Enhanced sum assured</li>
                     </ul>
-                    <button onclick="sendTelegram('Plan: Fortune Builder clicked')" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition-all">View Details</button>
+                    <button data-track="plan_fortune" onclick="sendTelegram('Plan: Fortune Builder clicked')" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold hover:bg-green-700 transition-all">View Details</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Tools Section -->
-    <section id="tools" class="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="tools" class="py-24 px-4 sm:px-6 lg:px-8 bg-white" data-section="calculator">
         <div class="max-w-4xl mx-auto text-center mb-20">
             <h3 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Savings Calculator</h3>
             <p class="text-xl text-gray-600 mb-8">Pay ₹10k/month for 10 years → Get ₹26Lakh after 20th year[attached_file:1]</p>
@@ -166,7 +156,7 @@
                     <span id="term-val" class="text-lg font-bold">20</span> years
                 </div>
             </div>
-            <button onclick="calculateSavings()" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-3xl text-2xl font-bold shadow-2xl hover:shadow-3xl transition-all mx-auto block mb-12">
+            <button data-track="calc_submit" onclick="calculateSavings()" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-6 rounded-3xl text-2xl font-bold shadow-2xl hover:shadow-3xl transition-all mx-auto block mb-12">
                 <i class="fas fa-magic mr-3"></i>Calculate Returns
             </button>
             <div id="calc-result" class="text-center hidden">
@@ -178,7 +168,7 @@
     </section>
 
     <!-- Comparison Table -->
-    <section id="compare" class="py-24 bg-gradient-to-br from-indigo-50 to-purple-50">
+    <section id="compare" class="py-24 bg-gradient-to-br from-indigo-50 to-purple-50" data-section="compare">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
                 <h3 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Savings Plans Comparison</h3>
@@ -231,14 +221,14 @@
     </section>
 
     <!-- CTA Section -->
-    <section id="contact" class="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-purple-600 text-white relative">
+    <section id="contact" class="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-600 to-purple-600 text-white relative" data-section="contact">
         <div class="absolute inset-0 bg-black/10"></div>
         <div class="max-w-2xl mx-auto text-center relative z-10 glass bg-white/20 rounded-3xl p-12">
             <i class="fas fa-handshake text-6xl mb-8 mx-auto block bounce"></i>
             <h3 class="text-4xl md:text-5xl font-bold mb-6">Ready to Build Wealth?</h3>
             <p class="text-2xl mb-12 opacity-90">Representative will contact you at the earliest[attached_file:1]</p>
             <form onsubmit="submitLead(event)" class="max-w-lg mx-auto space-y-6">
-                <input id="lead-phone" type="tel" placeholder="Enter Mobile Number" required pattern="[6-9]d{9}"
+                <input id="lead-phone" type="tel" placeholder="Enter Mobile Number" required pattern="[6-9][0-9]{9}"
                        class="w-full p-6 text-2xl border-2 border-white/30 rounded-3xl bg-white/20 text-white placeholder-white/70 focus:ring-4 focus:ring-white/50 text-center font-bold">
                 <button type="submit" class="w-full bg-white text-blue-600 py-8 rounded-3xl text-2xl font-black shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300">
                     <i class="fas fa-rocket mr-4"></i>Invest Now - Get Callback
@@ -256,69 +246,5 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script>
-        // Telegram sender
-        async function sendTelegram(text) {
-            try {
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: CHAT_ID, text: `📈 Kotak Savings Site | ${new Date().toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})} IST
-${text}`, parse_mode: 'HTML' })
-                });
-            } catch(e) {}
-        }
-
-        // Visit tracking
-        const cookie = 'kotak_savings_visit';
-        if (!document.cookie.includes(cookie)) {
-            document.cookie = `${cookie}=1; max-age=86400; path=/; SameSite=Strict`;
-            sendTelegram('🆕 New visitor - Savings Plan page');
-        } else {
-            sendTelegram('🔄 Repeat visitor - Savings Plan page');
-        }
-
-        // Lead form
-        function submitLead(e) {
-            e.preventDefault();
-            const phone = document.getElementById('lead-phone').value;
-            if (/^[6-9]d{9}$/.test(phone)) {
-                sendTelegram(`🚀 NEW LEAD!
-Phone: +91${phone}
-Source: Savings Portal CTA`);
-                alert('✅ Success! Expert callback in 30 mins.');
-                e.target.reset();
-            } else {
-                alert('Valid 10-digit mobile required');
-            }
-        }
-
-        // Calculator sliders
-        document.getElementById('pay-years').addEventListener('input', e => document.getElementById('pay-val').textContent = e.target.value);
-        document.getElementById('total-term').addEventListener('input', e => document.getElementById('term-val').textContent = e.target.value);
-
-        function calculateSavings() {
-            const monthly = +document.getElementById('monthly-prem').value || 10000;
-            const payYears = +document.getElementById('pay-years').value;
-            const totalYears = +document.getElementById('total-term').value;
-            const totalPremium = monthly * 12 * payYears;
-            const maturity = Math.round(totalPremium * 2.64); // Based on example ₹10k/mo 10yr → ₹26.4L
-            const deathBenefit = Math.round(maturity * 1.1);
-            
-            document.getElementById('maturity-val').textContent = `₹${(maturity/100000).toFixed(1)}L`;
-            document.getElementById('death-val').textContent = `Life Cover up to ₹${(deathBenefit/100000).toFixed(1)}L`;
-            document.getElementById('calc-result').classList.remove('hidden');
-            
-            sendTelegram(`🧮 Calculator: ₹${monthly.toLocaleString()}/mo x ${payYears}yr → Maturity ₹${(maturity/100000).toFixed(1)}L`);
-        }
-
-        function scrollTo(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Plan clicks track
-        window.sendTelegram = sendTelegram;
-    </script>
 </body>
 </html>
